@@ -1,0 +1,16 @@
+# Ignore all static files so they don't bloat the Lambda
+/static/
+/static/projects/
+/static/projects/mario/
+
+# Ignore TypeScript source files if you only deploy compiled JS
+*.ts
+*.tsx
+*.map
+
+# Ignore node_modules (Vercel installs dependencies separately)
+node_modules/
+
+# Optional: ignore logs or local config files
+*.log
+.env

@@ -27,7 +27,6 @@ const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
 
 if (config.challenge !== false) {
   console.log(chalk.green("🔒 Password protection is enabled! Listing logins below"));
-  // biome-ignore lint/complexity/noForEach:
   Object.entries(config.users).forEach(([username, password]) => {
     console.log(chalk.blue(`Username: ${username}, Password: ${password}`));
   });
@@ -90,13 +89,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* if (process.env.MASQR === "true") {
-  console.log(chalk.green("Masqr is enabled"));
-  setupMasqr(app);
-} */
-
-// Serve static files from the "static" folder
-app.use(express.static(path.join(__dirname, "static"), { fallthrough: true }));
+// Serve all static files from "static" folder at root level
+app.use(express.static(path.join(__dirname, 'static')));
 
 app.use("/fq", cors({ origin: true }));
 
@@ -114,7 +108,7 @@ const routes = [
   { path: "/trickedtheteachers", file: "trickedtheteachers.html" },
 ];
 
-// Serve routes from the "static" folder
+// Serve other routes from the "static" folder
 routes.forEach((route) => {
   app.get(route.path, (_req, res) => {
     res.sendFile(path.join(__dirname, "static", route.file));
