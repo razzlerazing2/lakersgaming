@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Math Bros. Dashboard</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.background.etc/daddy.png.png" />
+    <script src="/js/main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/trickedtheteachers.css">
+  </head>
+  <body>
+    <nav class="top-nav">
+    <div class="logo"><a href="/trickedtheteachers">SKG</a></div>
+    <ul>
+      <li><a href="/games">Games</a></li>
+      <li><a href="https://google.com" target="_blank">EMERGENCY BUTTON</a></li>
+    </ul>
+  </nav> 
+      <div id="loader"></div>
+    <div id="game-container" class="proxy-buttons-container">
+    </div>
+<!--<script src="/Gamess.js"></script>-->
+    <script>
+      let games = [];
+
+      fetch("config/games.json")
+        .then((response) => response.json())
+        .then((data) => {
+          games = data;
+          const container = document.getElementById("game-container");
+          data.forEach((project) => {
+            const game = document.createElement("a");
+            game.href = project.link;
+            game.className = "proxy-button";
+            game.innerHTML = `
+              <img class="game-icon" src="${project.imgSrc}" alt="icon" />
+              <p>${project.title}</p>`;
+            container.appendChild(game);
+          });
+          document.getElementById("loader").style.display = "none";
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
+  </body>
+</html>

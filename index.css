@@ -1,0 +1,179 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  background-image: url("/favicon.background.etc/trickertrigger.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+  color: white;
+  line-height: 1.6;
+}
+.proxy-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.proxy-button {
+  position: relative;
+  padding: 1rem 2rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+}
+.proxy-button:hover {
+  transform: translateY(-20%) scale(1.1);
+  transition: 0.3s ease;
+}
+.proxy-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: rainbow 5s linear infinite;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.proxy-button:hover::before {
+  opacity: 1;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.top-nav {
+  position: fixed;
+  top: 1px; /* Adjust as needed */
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+.top-nav .logo {
+ background: linear-gradient(0deg, #FF0000, #0000FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+  font-size: 15px;
+}
+.top-nav .logo:hover {
+    transform: translateY(-20%) scale(1.05);
+    transition: all 0.3s ease;
+}
+.top-nav > *:not(:first-child) {
+  margin-left: 900px; /* Add 20px left margin to all direct children except the first */
+}
+
+.top-nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease; /* Ensure transitions apply */
+  display: inline-block; /* Needed for transform to work properly */
+}
+
+.top-nav ul li a:hover {
+  transform: translateY(-20%) scale(1.05);
+  background: linear-gradient(0deg, #FF0000, #0000FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+/* Push content down so it's not hidden under fixed nav */
+
+.content {
+  margin-top: 80px;
+}
+.container {
+  width: 860px;
+  padding: 20px;
+  border-radius: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px); /* I'm pretty sure adds a thing called "glassy" effect. */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  text-align: center;
+}
+.container:hover {
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+/* WebKit Scrollbar Styling */
+.container::-webkit-scrollbar {
+  width: 6px;
+  background-color: #222;
+}
+.container::-webkit-scrollbar-track {
+  background-color: #222;
+  border-radius: 10px;
+}
+.container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fff;
+}
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+header, footer {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+h2 {
+    margin: 0;
+    padding: 33px;
+    font-size: 17px;
+}
+main {
+  padding: 20px;
+}
