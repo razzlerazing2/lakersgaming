@@ -95,8 +95,8 @@ app.use(express.urlencoded({ extended: true }));
   setupMasqr(app);
 } */
 
-// Serve all static files directly from root directory (__dirname)
-app.use(express.static(__dirname, { fallthrough: true }));
+// Serve static files from the "static" folder
+app.use(express.static(path.join(__dirname, "static"), { fallthrough: true }));
 
 app.use("/fq", cors({ origin: true }));
 
@@ -114,22 +114,22 @@ const routes = [
   { path: "/trickedtheteachers", file: "trickedtheteachers.html" },
 ];
 
-// Serve routes from root directory (no "static" folder)
+// Serve routes from the "static" folder
 routes.forEach((route) => {
   app.get(route.path, (_req, res) => {
-    res.sendFile(path.join(__dirname, route.file));
+    res.sendFile(path.join(__dirname, "static", route.file));
   });
 });
 
-// 404 handler — serve 404.html from root
+// 404 handler — serve 404.html from "static"
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "404.html"));
+  res.status(404).sendFile(path.join(__dirname, "static", "404.html"));
 });
 
-// 500 error handler — serve 404.html from root
+// 500 error handler — serve 404.html from "static"
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).sendFile(path.join(__dirname, "404.html"));
+  res.status(500).sendFile(path.join(__dirname, "static", "404.html"));
 });
 
 // Bare server and http server setup
