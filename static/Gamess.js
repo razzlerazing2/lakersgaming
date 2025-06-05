@@ -1,14 +1,3 @@
-let qp;
-
-try {
-  qp = window.top.location.pathname === "/games";
-} catch {
-  try {
-    qp = window.parent.location.pathname === "/games";
-  } catch {
-    qp = false;
-  }
-}
 function showLoader() {
   const loader = document.getElementById("loader");
   

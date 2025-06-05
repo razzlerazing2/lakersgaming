@@ -1,14 +1,3 @@
-let qp;
-
-try {
-  qp = window.top.location.pathname === "/trickedtheteachers";
-} catch {
-  try {
-    qp = window.parent.location.pathname === "/trickedtheteachers";
-  } catch {
-    qp = false;
-  }
-}
 function showLoader() {
   const loader = document.getElementById("loader");
   

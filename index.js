@@ -97,7 +97,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "static")));
 app.use("/fq", cors({ origin: true }));
 
-const routes = [
+/* const routes = [
   { path: "/about", file: "about.html" },
   { path: "/apps", file: "apps.html" },
   { path: "/games", file: "Gamess.html" },
@@ -108,7 +108,7 @@ const routes = [
   { path: "/exthangr", file: "proxy.html" },
   { path: "/trickedtheteachers", file: "trickedtheteachers.html" },
   { path: "/search", file: "search.html" },
-];
+]; */
 
 // biome-ignore lint/complexity/noForEach:
 routes.forEach((route) => {
